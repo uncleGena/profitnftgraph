@@ -1,4 +1,4 @@
-scalar Bytes
+# scalar Bytes
 
 # type Query {
 #   token(id: ID!): TokenEntity!
@@ -23,8 +23,8 @@ type OwnerEntity @entity {
   id: ID!
   address: Bytes
   approved: Boolean
-  transfersFrom: [TransferEntity]! @derivedFrom(field: "from"),
-  transfersTo: [TransferEntity]! @derivedFrom(field: "to"),
+  transfersFrom: [TransferEntity]! @derivedFrom(field: "from")
+  transfersTo: [TransferEntity]! @derivedFrom(field: "to")
   tokens: [TokenEntity!]! @derivedFrom(field: "owner")
 }
 

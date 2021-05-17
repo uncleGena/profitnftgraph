@@ -1,4 +1,6 @@
 specVersion: 0.0.2
+description: Profit Nft Graph
+repository: https://github.com/uncleGena/profitnftgraph
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,15 +10,15 @@ dataSources:
     source:
       address: "0x37BF6c6731544D11985b08D5122348d8901Cc315"
       abi: ProfITNFT
+      startBlock: 24562807
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Approval
-        - ApprovalForAll
-        - OwnershipTransferred
-        - Transfer
+        - TransferEntity
+        - OwnerEntity
+        - TokenEntity
       abis:
         - name: ProfITNFT
           file: ./abis/ProfITNFT.json
