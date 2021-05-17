@@ -1,0 +1,40 @@
+scalar Bytes
+
+# type Query {
+#   token(id: ID!): TokenEntity!
+#   tokenEntities: [TokenEntity]!
+
+#   transferEntity(id: ID!): TransferEntity!
+#   transferEntities: [TransferEntity]!
+
+#   ownerEntity(id: ID!): OwnerEntity
+#   ownerEntities: [OwnerEntity]!
+# }
+
+type TransferEntity @entity {
+  id: ID!
+  from: OwnerEntity
+  to: OwnerEntity!
+  token: TokenEntity!
+  date: String
+}
+
+type OwnerEntity @entity {
+  id: ID!
+  address: Bytes
+  approved: Boolean
+  transfersFrom: [TransferEntity]! @derivedFrom(field: "from"),
+  transfersTo: [TransferEntity]! @derivedFrom(field: "to"),
+  tokens: [TokenEntity!]! @derivedFrom(field: "owner")
+}
+
+type TokenEntity @entity {
+  id: ID!
+  name: String
+  symbol: String
+  tokenURI: String!
+  approved: Bytes
+  block: String
+  transfers: [TransferEntity!]! @derivedFrom(field: "token")
+  owner: OwnerEntity
+}
