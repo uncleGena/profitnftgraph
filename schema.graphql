@@ -1,4 +1,4 @@
-# scalar Bytes
+scalar Bytes
 
 # type Query {
 #   token(id: ID!): TokenEntity!
@@ -34,7 +34,7 @@ type TokenEntity @entity {
   symbol: String
   tokenURI: String!
   approved: Bytes
-  block: String
+  blockNumber: String
   transfers: [TransferEntity!]! @derivedFrom(field: "token")
   owner: OwnerEntity
 }
